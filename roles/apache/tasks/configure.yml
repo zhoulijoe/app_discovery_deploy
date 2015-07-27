@@ -1,0 +1,11 @@
+---
+
+- name: generate mod jk worker property
+  template:
+    src: etc/libapache2-mod-jk/workers.properties.j2
+    dest: /etc/libapache2-mod-jk/workers.properties
+  notify: restart apache2
+
+- name: disable default site
+  command: a2dissite 000-default
+  notify: restart apache2

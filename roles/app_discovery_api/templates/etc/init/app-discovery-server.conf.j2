@@ -1,0 +1,13 @@
+description  "Run app discovery jar"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+# automatically restart if it crashes
+respawn
+
+console log
+
+script
+    exec /usr/bin/java -jar /opt/app_discovery_server/appdiscovery-{{ version }}.jar
+end script

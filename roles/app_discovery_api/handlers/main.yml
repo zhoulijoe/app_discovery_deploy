@@ -1,0 +1,6 @@
+---
+
+- name: restart appdiscovery
+  service:
+      name: app-discovery-server
+      state: restarted

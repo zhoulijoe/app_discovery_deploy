@@ -1,0 +1,7 @@
+---
+
+- name: install tomcat7
+  apt:
+    pkg: tomcat7
+    state: latest
+    force: yes

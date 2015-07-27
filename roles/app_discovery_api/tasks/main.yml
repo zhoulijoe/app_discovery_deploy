@@ -1,0 +1,7 @@
+---
+
+- name: generate upstart config to run app jar
+  template:
+    src: etc/init/app-discovery-server.conf.j2
+    dest: /etc/init/app-discovery-server.conf
+  notify: restart appdiscovery

@@ -1,0 +1,19 @@
+---
+
+- name: add JRE ppa
+  apt_repository:
+    repo: 'ppa:webupd8team/java'
+    state: present
+
+- name: accept Oracle license during installation
+  debconf:
+    name: 'oracle-java8-installer'
+    question: 'shared/accepted-oracle-license-v1-1'
+    value: 'true'
+    vtype: 'select'
+
+- name: install JRE
+  apt:
+    pkg: oracle-java8-installer
+    state: latest
+    force: yes
