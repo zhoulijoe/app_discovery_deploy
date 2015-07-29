@@ -12,12 +12,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
 
   # Setup db server first, so API servlet can connect to DB and initialize correctly
-  config.vm.define "db" do |db|
+  config.vm.define "app-discovery-db" do |db|
     db.vm.hostname = "app-discovery-db"
     db.vm.network "private_network", ip: "10.20.2.3"
   end
 
-  config.vm.define "api", primary: true do |api|
+  config.vm.define "app-discovery-api", primary: true do |api|
     api.vm.hostname = "app-discovery-api"
     api.vm.network "private_network", ip: "10.20.2.2"
     api.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)"
@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  # Configure local DNS for vagrant boxes
+  # Configure local DNS for vagrant.yml boxes
   config.vm.provision "hosts" do |provisioner|
     provisioner.add_host "10.20.2.2", ["app-discovery-api"]
     provisioner.add_host "10.20.2.3", ["app-discovery-db"]
@@ -36,8 +36,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.sudo = true
     ansible.playbook = "api_server.yml"
     ansible.groups = {
-        "webserver" => ["api"],
-        "dbserver" => ["db"]
+        "api" => ["app-discovery-api"],
+        "db" => ["app-discovery-db"],
+        "vagrant.yml:children" => ["api", "db"]
     }
   end
 end

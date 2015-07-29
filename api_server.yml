@@ -4,11 +4,11 @@
   roles:
     - common
 
-- hosts: dbserver
+- hosts: db
   roles:
     - mongodb
 
-- hosts: webserver
+- hosts: api
   roles:
     - java
     - app_discovery_api

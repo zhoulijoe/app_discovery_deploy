@@ -9,5 +9,6 @@ respawn
 console log
 
 script
-    exec /usr/bin/java -jar /opt/app_discovery_server/appdiscovery-{{ version }}.jar
+    exec /usr/bin/java {% if remote_debug_enabled %}-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address={{ remote_debug_port }} {% endif %}\
+                       -jar /opt/app_discovery_server/appdiscovery-{{ version }}.jar
 end script

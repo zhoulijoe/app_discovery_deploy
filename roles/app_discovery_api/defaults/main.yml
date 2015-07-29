@@ -1,0 +1,6 @@
+---
+
+version: 0.0.1-SNAPSHOT
+
+remote_debug_enabled: False
+remote_debug_port: 5005
