@@ -12,6 +12,11 @@ Deploy app discovery backend using ansible
 
 - Ansible >=1.9.2
 
-## Initial setup
+## Initial Setup
 
     vagrant up
+
+## API Server Local Development
+- Change playbook to `api_server.yml` in `Vagrantfile`
+- Build new jar
+- Run `vagrant provision`
