@@ -1,5 +1,17 @@
 ---
 
+- name: create parent dir to deploy jar
+  file:
+    path: "{{ api_server_deploy_dir }}"
+    state: directory
+
+- name: deploy jar
+  copy:
+    src: "{{ api_server_local_build_path }}"
+    dest: "{{ api_server_deploy_path }}"
+  notify: restart appdiscovery
+  when: api_server_use_local_build
+
 - name: generate upstart config to run app jar
   template:
     src: etc/init/app-discovery-server.conf.j2

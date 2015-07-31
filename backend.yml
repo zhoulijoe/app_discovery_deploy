@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  roles:
+    - common
+
+- hosts: db
+  roles:
+    - mongodb
+
+- hosts: api
+  roles:
+    - java
+    - app_discovery_api

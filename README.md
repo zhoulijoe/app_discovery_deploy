@@ -4,13 +4,13 @@
 Deploy app discovery backend using ansible
 
 ## Prerequisite
-- VirtualBox
-- Vagrant
+- VirtualBox >=4.3.30
+- Vagrant >=1.7.4
 - Following Vagrant plugs:
 
         vagrant plugin install vagrant-hosts vagrant-hostmanager
 
-- Ansible
+- Ansible >=1.9.2
 
 ## Initial setup
 
