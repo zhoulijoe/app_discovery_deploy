@@ -28,7 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.groups = {
           "api" => ["app-discovery-api"],
           "db" => ["app-discovery-db"],
-          "vagrant.yml:children" => ["api", "db"]
+          "db_client:children" => ["api"],
+          "vagrant:children" => ["api", "db"]
       }
       ansible.verbose = "v"
     end

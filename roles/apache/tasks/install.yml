@@ -4,7 +4,7 @@
   apt:
     pkg: "{{ item }}"
     state: latest
-    force: yes
+    force: True
   with_items:
     - apache2
     - libapache2-mod-jk

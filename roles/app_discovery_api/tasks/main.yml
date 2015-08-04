@@ -17,3 +17,11 @@
     src: etc/init/app-discovery-server.conf.j2
     dest: /etc/init/app-discovery-server.conf
   notify: restart appdiscovery
+
+- name: add db user for app discovery server
+  become_user: postgres
+  delegate_to: "{{ groups['db']|first }}"
+  postgresql_user:
+    name: appdiscovery
+    password: secret
+    state: present

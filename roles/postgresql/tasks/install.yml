@@ -1,0 +1,21 @@
+---
+
+- name: add PostgreSQL official APT repository
+  apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main"
+
+- name: add PostgreSQL APT repository key
+  apt_key:
+    id: ACCC4CF8
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+
+- name: install PostgreSQL, extension and administrative tools
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+    force: True
+  with_items:
+    - postgresql-{{ postgresql_version }}
+    - postgresql-contrib-{{ postgresql_version }}
+    - libpq-dev
+    - python-psycopg2

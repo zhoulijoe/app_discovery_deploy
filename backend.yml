@@ -6,7 +6,7 @@
 
 - hosts: db
   roles:
-    - mongodb
+    - postgresql
 
 - hosts: api
   roles:

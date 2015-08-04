@@ -1,7 +1,7 @@
 ---
 
-- name: restart mongodb
+- name: restart postgresql
   service:
-    name: mongod
+    name: postgresql
     state: restarted
     enabled: yes

@@ -1,0 +1,10 @@
+---
+
+- name: generate PostgreSQL config
+  template:
+    src: etc/postgresql/{{ postgresql_version }}/main/{{ item }}
+    dest: /etc/postgresql/{{ postgresql_version }}/main/{{ item }}
+  notify: restart postgresql
+  with_items:
+    - postgresql.conf
+    - pg_hba.conf
