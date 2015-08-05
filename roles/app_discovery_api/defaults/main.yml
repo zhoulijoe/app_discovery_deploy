@@ -11,3 +11,7 @@ api_server_local_build_path: ../app_discovery_server/build/libs/{{ api_server_ja
 
 api_server_remote_debug_enabled: False
 api_server_remote_debug_port: 5005
+
+api_server_db: appdiscovery
+api_server_db_user: appdiscovery
+api_server_db_password: secret

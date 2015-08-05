@@ -18,10 +18,18 @@
     dest: /etc/init/app-discovery-server.conf
   notify: restart appdiscovery
 
+- name: add db for app discovery server
+  become_user: postgres
+  delegate_to: "{{ groups['db']|first }}"
+  postgresql_db:
+    name: "{{ api_server_db }}"
+    state: present
+
 - name: add db user for app discovery server
   become_user: postgres
   delegate_to: "{{ groups['db']|first }}"
   postgresql_user:
-    name: appdiscovery
-    password: secret
+    name: "{{ api_server_db_user }}"
+    password: "{{ api_server_db_password }}"
+    db: "{{ api_server_db }}"
     state: present
