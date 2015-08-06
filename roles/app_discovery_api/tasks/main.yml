@@ -14,8 +14,17 @@
 
 - name: generate upstart config to run app jar
   template:
-    src: etc/init/app-discovery-server.conf.j2
+    src: app-discovery-server.conf.j2
     dest: /etc/init/app-discovery-server.conf
+  notify: restart appdiscovery
+
+- name: create config directory
+  file: path="{{ api_server_config_path }}" state=directory mode=0755
+
+- name: generate app config
+  template:
+    src: application.properties.j2
+    dest: "{{ api_server_config_path }}/application.properties"
   notify: restart appdiscovery
 
 - name: add db for app discovery server

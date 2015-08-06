@@ -7,6 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.manage_host = true
 
   config.vm.box = "ubuntu/trusty64"
+  config.ssh.insert_key = false
 
   # Setup db server first, so API servlet can connect to DB and initialize correctly
   config.vm.define "app-discovery-db" do |db|
