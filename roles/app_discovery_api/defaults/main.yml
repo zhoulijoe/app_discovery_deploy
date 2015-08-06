@@ -18,3 +18,6 @@ api_server_remote_debug_port: 5005
 api_server_db: appdiscovery
 api_server_db_user: appdiscovery
 api_server_db_password: secret
+
+# Active profile passed to Spring via command line
+api_server_spring_active_profile: vagrant

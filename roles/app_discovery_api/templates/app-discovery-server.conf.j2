@@ -10,5 +10,7 @@ console log
 
 script
     exec /usr/bin/java {% if api_server_remote_debug_enabled %}-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address={{ api_server_remote_debug_port }} {% endif %}\
-                       -jar {{ api_server_deploy_path }} --spring.config.location={{ api_server_config_path }}/
+                       -jar {{ api_server_deploy_path }} \
+                       --spring.config.location={{ api_server_config_path }} \
+                       --spring.profiles.active={{ api_server_spring_active_profile }}
 end script
