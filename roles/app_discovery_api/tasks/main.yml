@@ -19,12 +19,15 @@
   notify: restart appdiscovery
 
 - name: create config directory
-  file: path="{{ api_server_config_path }}" state=directory mode=0755
+  file:
+    path: "{{ api_server_config_dir }}"
+    state: directory
+    mode: 0755
 
 - name: generate app config
   template:
-    src: application.properties.j2
-    dest: "{{ api_server_config_path }}/application.properties"
+    src: override.yml.j2
+    dest: "{{ api_server_config_path }}"
   notify: restart appdiscovery
 
 - name: add db for app discovery server

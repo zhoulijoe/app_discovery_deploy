@@ -5,7 +5,8 @@ api_server_jar_name: appdiscovery-{{ api_server_version }}.jar
 
 api_server_deploy_dir: /opt/app_discovery_server
 api_server_deploy_path: "{{ api_server_deploy_dir }}/{{ api_server_jar_name }}"
-api_server_config_path: "{{ api_server_deploy_dir }}/config"
+api_server_config_dir: "{{ api_server_deploy_dir }}/config"
+api_server_config_path: "{{ api_server_config_dir }}/override.yml"
 
 api_server_use_local_build: True
 api_server_local_build_path: ../app_discovery_server/build/libs/{{ api_server_jar_name }}
