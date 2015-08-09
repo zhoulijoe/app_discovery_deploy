@@ -1,4 +1,8 @@
 ---
 
-server.port: {{ api_server_port }}
-logging.path: /var/log
+# Logging file path
+logging.file: /var/log/{{ api_server_app_name }}.log
+
+# Enable tomcat access log
+server.tomcat.access-log-enabled: true
+server.tomcat.basedir: {{ api_server_deploy_dir }}

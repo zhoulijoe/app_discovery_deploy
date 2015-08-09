@@ -1,7 +1,9 @@
 ---
 
+api_server_app_name: appdiscovery
+
 api_server_version: 0.0.1-SNAPSHOT
-api_server_jar_name: appdiscovery-{{ api_server_version }}.jar
+api_server_jar_name: "{{ api_server_app_name }}-{{ api_server_version }}.jar"
 
 api_server_deploy_dir: /opt/app_discovery_server
 api_server_deploy_path: "{{ api_server_deploy_dir }}/{{ api_server_jar_name }}"
@@ -11,13 +13,11 @@ api_server_config_path: "{{ api_server_config_dir }}/override.yml"
 api_server_use_local_build: True
 api_server_local_build_path: ../app_discovery_server/build/libs/{{ api_server_jar_name }}
 
-api_server_port: 80
-
 api_server_remote_debug_enabled: False
 api_server_remote_debug_port: 5005
 
-api_server_db: appdiscovery
-api_server_db_user: appdiscovery
+api_server_db: "{{ api_server_app_name }}"
+api_server_db_user: "{{ api_server_app_name }}"
 api_server_db_password: secret
 
 # Active profile passed to Spring via command line

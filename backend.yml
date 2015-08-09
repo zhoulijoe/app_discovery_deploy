@@ -11,4 +11,5 @@
 - hosts: api
   roles:
     - java
+    - apache
     - app_discovery_api
