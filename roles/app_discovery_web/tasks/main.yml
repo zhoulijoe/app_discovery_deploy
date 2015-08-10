@@ -1,0 +1,17 @@
+---
+
+- name: copy web app files
+  copy:
+    src: "{{ web_local_dist_dir }}/"
+    dest: "{{ web_deploy_dir }}"
+  when: web_use_local_build
+
+- name: generate apache site config
+  template:
+    src: app-discovery-web.conf.j2
+    dest: /etc/apache2/sites-available/app-discovery-web.conf
+  notify: restart apache2
+
+- name: enable apche site for web app
+  command: a2ensite app-discovery-web
+  notify: restart apache2

@@ -29,3 +29,13 @@
     src: override.yml.j2
     dest: "{{ api_server_config_path }}"
   notify: restart appdiscovery
+
+- name: generate api site apache config
+  template:
+    src: api-server.conf.j2
+    dest: /etc/apache2/sites-available/api-server.conf
+  notify: restart apache2
+
+- name: enable apche api site
+  command: a2ensite api-server
+  notify: restart apache2

@@ -9,13 +9,3 @@
 - name: disable default site
   command: a2dissite 000-default
   notify: restart apache2
-
-- name: generate api site config
-  template:
-    src: api-server.conf.j2
-    dest: /etc/apache2/sites-available/api-server.conf
-  notify: restart apache2
-
-- name: enable api site
-  command: a2ensite api-server
-  notify: restart apache2

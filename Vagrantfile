@@ -9,7 +9,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.ssh.insert_key = false
 
-  # Setup db server first, so API servlet can connect to DB and initialize correctly
   config.vm.define "app-discovery-db" do |db|
     db.vm.hostname = "app-discovery-db"
     db.vm.network "private_network", ip: "10.20.2.3"
@@ -29,8 +28,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.groups = {
           "api" => ["app-discovery-api"],
           "db" => ["app-discovery-db"],
+          "web" => ["app-discovery-db"],
           "db_client:children" => ["api"],
-          "vagrant:children" => ["api", "db"]
+          "vagrant:children" => ["api", "db", "web"]
       }
       ansible.verbose = "v"
     end

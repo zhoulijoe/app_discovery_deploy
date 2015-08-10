@@ -1,0 +1,8 @@
+---
+
+web_use_local_build: True
+web_local_dist_dir: ../app_discovery_web/dist
+
+web_deploy_dir: /var/www/html/app_discovery_web
+
+web_apache_port: 80

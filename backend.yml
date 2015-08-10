@@ -13,3 +13,8 @@
     - java
     - apache
     - app_discovery_api
+
+- hosts: web
+  roles:
+    - apache
+    - app_discovery_web
